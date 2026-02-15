@@ -1,3 +1,20 @@
 spring:
-  application:
-    name: OrderService
+    application:
+        name: OrderService
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        username: ${TEST_DB_USERNAME}
+        password: ${TEST_DB_PASSWORD}
+        url: jdbc:postgresql://localhost:5432/order_service
+    jpa:
+        hibernate:
+            ddl-auto: validate
+        show-sql: false
+        properties:
+            hibernate:
+                default_schema: order_service
+    flyway:
+        out-of-order: false
+        default-schema: order_service
+        locations: classpath:db/migration
+        enabled: true
